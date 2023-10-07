@@ -16,6 +16,13 @@ function Counter() {
   const [count, setCount] = useState(0)
   const [step, setStep] = useState(1)
 
+
+  function handelReset() {
+    setCount(0);
+    setStep(1)
+  }
+
+
   const date = new Date('October 21 2023')
   date.setDate(date.getDate() + count)
 
@@ -37,6 +44,13 @@ function Counter() {
         <span>{count === 0 ? "Today is " : count > 0 ? `${count} days from today is ` : `${Math.abs(count)} days ago was`}</span>
         <span>{date.toDateString()}</span>
       </p>
+
+      {count !== 0 || step !== 1 ?
+        (<div>
+          <button onClick={handelReset}>Reset</button>
+        </div>
+        ) : null}
+
     </div>
   </div>
 }
